@@ -8,6 +8,13 @@ export const loadItems = {
       payload: items
     }
   }
+
+  export function delItem(itemId:number){
+    return {
+      type: 'DEL_ITEM',
+      payload: itemId
+    }
+  }
   
   export function addItem(title : any) {
     return {
