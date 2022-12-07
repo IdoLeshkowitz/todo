@@ -1,18 +1,19 @@
-import { Todo } from "../types/types";
-export function listReducer(items = [], action: any) {
+import { isConstructorDeclaration } from "typescript";
+import { AppState, Todo } from "../types/types";
+import { ListActionType } from "../actions/list.actions";
+export function listReducer(items: Todo[] = [], action: any): Todo[] {
 	switch (action.type) {
-		case "SET_ITEMS":
+		case ListActionType.setItems: {
 			return action.payload;
-
-		case "ADD_ITEM":
+		}
+		case ListActionType.addItem:
 			return [...items, action.payload];
 
-		case "CLEAR_ITEMS":
+		case ListActionType.clearAllItems:
 			return [];
 
-		case "DEL_ITEM":
+		case ListActionType.delItem:
 			return items.filter((item: Todo) => item.id !== action.payload);
-
 		default:
 			return items;
 	}

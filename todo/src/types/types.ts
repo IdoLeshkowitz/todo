@@ -5,5 +5,6 @@ export interface Todo {
 
 export interface AppState {
 	items: Todo[];
-    isLoading: boolean;
+    isLoading: boolean  ;
+	isTodoListVisible: boolean;
 }

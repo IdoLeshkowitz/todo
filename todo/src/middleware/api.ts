@@ -1,16 +1,18 @@
-import {toggleLoading} from '../actions/ui.actions';
-import {setItems} from '../actions/list.actions';
- 
-export const api = (store: any) => (next: any) => (action:any) => {
- if(action.type === 'LOAD_ITEMS') {
-   store.dispatch(toggleLoading(true));
-   fetch('https://jsonplaceholder.typicode.com/todos')
-    .then( results => results.json())
-    .then( items => {
-      store.dispatch(setItems(items));
-      store.dispatch(toggleLoading(false));
-    })
- } else {
-   next(action);
- }
-}
+import { toggleLoading } from "../actions/ui.actions";
+import { ListActionType, setItems } from "../actions/list.actions";
+import { AppState } from "../types/types";
+import { store as Store } from "../store/store";
+export const api = (store: any) => (next: any) => (action: any) => {
+	if (action.type === ListActionType.loadItems) {
+		store.dispatch(toggleLoading(true));
+		fetch("https://jsonplaceholder.typicode.com/todos")
+			.then((results) => results.json())
+			.then((items) => {
+				store.dispatch(toggleLoading(false));
+				console.log(Store.getState());
+				store.dispatch(setItems(items));
+			});
+	} else {
+		next(action);
+	}
+};

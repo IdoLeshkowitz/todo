@@ -1,23 +1,21 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux';
-import {listReducer} from '../reducers/list.reducer'
-import {uiReducer} from '../reducers/ui.reducer';
-import {logger} from '../middleware/logger';
-import {api} from '../middleware/api';
+//@ts-nocheck
+import { combineReducers } from "redux";
+import { listReducer } from "../reducers/list.reducer";
+import { uiReducer } from "../reducers/ui.reducer";
+import { logger } from "../middleware/logger";
+import { api } from "../middleware/api";
+import { AppState } from "../types/types";
+import { configureStore } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
-  loading: false,
+	items: [],
+	isLoading: false,
 };
 
 const rootReducer = combineReducers({
-  items: listReducer,
-  loading: uiReducer,
-})
+	isLoading: uiReducer,
+	items: listReducer,
+});
 
 const middleware = [logger, api];
-
-export const store = createStore(
-  rootReducer, 
-  initialState,
-  applyMiddleware(...middleware)
-);
+export const store = configureStore({ reducer: rootReducer, middleware: [...middleware] });
