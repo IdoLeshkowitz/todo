@@ -1,10 +1,5 @@
 export interface Todo {
-	id: number; //todo generate symbol id
+	id: number;
 	title: string;
-}
-
-export interface AppState {
-	items: Todo[];
-    isLoading: boolean  ;
-	isTodoListVisible: boolean;
+	isCompleted: boolean;
 }
