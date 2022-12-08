@@ -20,7 +20,11 @@ const TodoListItem = (props: Props): any => {
 					setEditingMode={(value) => setEditingMode(value)}
 				/>
 			) : (
-				<TodoViewMode todoItem={todoItem} setEditingMode={(value) => setEditingMode(value)} />
+				<TodoViewMode
+					todoItem={todoItem}
+					setEditingMode={(value) => setEditingMode(value)}
+					updateTodo={updateTodo}
+				/>
 			)}
 		</>
 	);

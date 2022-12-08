@@ -9,7 +9,7 @@ function Header(props: any) {
 				const newTodo: Todo = {
 					id: toDosCounter + 1,
 					title: event.target.value,
-					isCompleted: false,
+					completed: false,
 				};
 				addTodo(newTodo);
 				inputRef.current = "";

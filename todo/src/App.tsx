@@ -22,8 +22,12 @@ function App() {
 	const addTodo = (newTodo: Todo) => {
 		const newTodos = [...todos, newTodo];
 		setTodos(newTodos);
-
 	};
+	const onClearCompleted = () => {
+		const newTodos = todos.filter((todo) => !todo.completed);
+		setTodos(newTodos);
+	};
+
 	useEffect(() => {
 		const fetchToDosResolved = (data: Todo[]) => {
 			setTodos(data);
@@ -37,7 +41,7 @@ function App() {
 			<section className="todoapp" style={{ display: isLoading ? "none" : "inherit" }}>
 				<Header addTodo={(newTodo: Todo) => addTodo(newTodo)} toDosCounter={todos.length} />
 				<Main todos={todos} updateTodo={updateTodo} />
-				<Footer />
+				<Footer onClearCompleted={onClearCompleted} todos={todos} />
 			</section>
 		</>
 	);
