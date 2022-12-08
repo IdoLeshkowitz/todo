@@ -1,6 +1,5 @@
 import { useState } from "react";
-
-import classNames from "classnames";
+import classNames from "classnames"
 const TodoInputMode = (props: any) => {
 	const { todoItem, editingMode, setEditingMode, updateTodo } = props;
 
