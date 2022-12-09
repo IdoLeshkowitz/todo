@@ -19,7 +19,11 @@ const TodoListItem = (props: Props): any => {
           {(todoItem = { todoItem })}
         </TodoInputMode>
       ) : (
-        <TodoViewMode setEditingMode={(value) => setEditingMode(value)} onDeleteTodo={onDeleteTodo}>
+        <TodoViewMode
+          setEditingMode={(value) => setEditingMode(value)}
+          onDeleteTodo={onDeleteTodo}
+          onUpdateTodo={onUpdateTodo}
+        >
           {{ todoItem }}
         </TodoViewMode>
       )}
