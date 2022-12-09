@@ -15,7 +15,7 @@ function Main(props: props) {
       <input className="toggle-all" type="checkbox" />
       <ul className="todo-list">
         {todos.map((todoItem: Todo) => (
-          <TodoItem >{{onUpdateTodo,todoItem, onDeleteTodo }}</TodoItem>
+          <TodoItem>{{ onUpdateTodo, todoItem, onDeleteTodo }}</TodoItem>
         ))}
       </ul>
     </section>

@@ -44,7 +44,7 @@ function App() {
       {isLoading ? <Loading /> : null}
       <section className="todoapp" style={{ display: isLoading ? "none" : "inherit" }}>
         <Header addTodo={(newTodo: Todo) => addTodo(newTodo)} toDosCounter={todos.length} />
-        <Main>{{ todos: todos, onUpdateTodo, onDeleteTodo }}</Main>
+        <Main>{{ todos, onUpdateTodo, onDeleteTodo }}</Main>
         <Footer onClearCompleted={onClearCompleted} todos={todos} />
       </section>
     </>

@@ -1,20 +1,20 @@
 import { useState } from "react";
 import classNames from "classnames";
 const TodoInputMode = (props: any) => {
-  const { children, editingMode, setEditingMode, updateTodo } = props;
+  const { children, editingMode, toggleEditingMode, onUpdateTodo } = props;
   const {todoItem}= children ; 
   const onInputBlur = () => {
-    setEditingMode(false);
+    toggleEditingMode(false);
   };
+  console.log()
   const onInputKeyDown = (event: any) => {
     if (event.key === "Enter") {
-      console.log("Enter key pressed");
-      setEditingMode(false);
+      toggleEditingMode(false);
       const updatedTodo = {
         ...todoItem,
         title: event.target.value,
       };
-      updateTodo(updatedTodo);
+      onUpdateTodo(updatedTodo);
     }
   };
 

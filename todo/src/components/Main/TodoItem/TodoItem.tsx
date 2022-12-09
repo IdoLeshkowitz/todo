@@ -9,18 +9,18 @@ interface Props {
 const TodoListItem = (props: Props): any => {
   const { todoItem, onUpdateTodo, onDeleteTodo } = props.children;
   const [editingMode, setEditingMode] = useState<boolean>(false);
+  const toggleEditingMode = (modeToBeSet) => {
+    setEditingMode(modeToBeSet);
+  };
   return (
     <>
       {editingMode ? (
-        <TodoInputMode
-          onUpdateTodo={onUpdateTodo}
-          setEditingMode={(value) => setEditingMode(value)}
-        >
-          {(todoItem = { todoItem })}
+        <TodoInputMode onUpdateTodo={onUpdateTodo} toggleEditingMode={toggleEditingMode}>
+          {{ todoItem }}
         </TodoInputMode>
       ) : (
         <TodoViewMode
-          setEditingMode={(value) => setEditingMode(value)}
+          toggleEditingMode={toggleEditingMode}
           onDeleteTodo={onDeleteTodo}
           onUpdateTodo={onUpdateTodo}
         >

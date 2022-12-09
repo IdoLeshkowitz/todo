@@ -1,15 +1,15 @@
 import { Todo } from "../../../../types/types";
 interface Props {
-  setEditingMode: (isEditing: boolean) => void;
+  toggleEditingMode: (isEditing: boolean) => void;
   onUpdateTodo: (todo: Todo) => void;
   onDeleteTodo: (todo: Todo) => void;
   children: { todoItem: Todo };
 }
 const TodoViewMode = (props: Props) => {
-  const { onDeleteTodo, setEditingMode, onUpdateTodo, children } = props;
+  const { onDeleteTodo, toggleEditingMode, onUpdateTodo, children } = props;
   const { todoItem } = children;
   const onDoubleClick = () => {
-    setEditingMode(true);
+    toggleEditingMode(true);
   };
   const onCompleteToggle = () => {
     const updatedTodo = { ...todoItem, completed: !todoItem.completed };
