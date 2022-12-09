@@ -1,11 +1,13 @@
 import { Todo } from "../../../../types/types";
 interface Props {
-	todoItem: Todo;
 	setEditingMode: (isEditing: boolean) => void;
 	updateTodo: (todo: Todo) => void;
+	onDeleteTodo: (todo:Todo)=>void; 
+	children : {todoItem : Todo};
 }
 const TodoViewMode = (props: Props) => {
-	const { todoItem, setEditingMode, updateTodo } = props;
+	const {onDeleteTodo,  setEditingMode, updateTodo, children } = props;
+	const{todoItem} = children ;
 	const onDoubleClick = () => {
 		setEditingMode(true);
 	};
@@ -13,7 +15,6 @@ const TodoViewMode = (props: Props) => {
 		const updatedTodo = { ...todoItem, completed: !todoItem.completed };
 		updateTodo(updatedTodo);
 	};
-
 	return (
 		<li>
 			<div>
@@ -24,7 +25,7 @@ const TodoViewMode = (props: Props) => {
 					onChange={onCompleteToggle}
 				/>
 				<label onDoubleClick={onDoubleClick}>{todoItem.title}</label>
-				<button className="destroy" />
+				<button className="destroy" onClick ={()=>onDeleteTodo(todoItem)} />
 			</div>
 		</li>
 	);

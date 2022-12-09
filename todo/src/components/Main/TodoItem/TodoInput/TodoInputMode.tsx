@@ -1,8 +1,8 @@
 import { useState } from "react";
 import classNames from "classnames";
 const TodoInputMode = (props: any) => {
-  const { todoItem, editingMode, setEditingMode, updateTodo } = props;
-
+  const { children, editingMode, setEditingMode, updateTodo } = props;
+  const {todoItem}= children ; 
   const onInputBlur = () => {
     setEditingMode(false);
   };

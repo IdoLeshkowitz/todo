@@ -1,33 +1,30 @@
 //@ts-nocheck
 import { Todo } from "../../../types/types";
-import { MouseEvent, useState, useRef } from "react";
-import { getByDisplayValue } from "@testing-library/react";
+import { useState } from "react";
 import TodoViewMode from "./TodoInput/TodoViewMode";
 import TodoInputMode from "./TodoInput/TodoInputMode";
 interface Props {
-	todoItem: Todo;
-	updateTodo: (todo: Todo) => void;
+  children: any;
 }
 const TodoListItem = (props: Props): any => {
-	const { todoItem, updateTodo } = props;
-	const [editingMode, setEditingMode] = useState<boolean>(false);
-	return (
-		<>
-			{editingMode ? (
-				<TodoInputMode
-					updateTodo={updateTodo}
-					todoItem={todoItem}
-					setEditingMode={(value) => setEditingMode(value)}
-				/>
-			) : (
-				<TodoViewMode
-					todoItem={todoItem}
-					setEditingMode={(value) => setEditingMode(value)}
-					updateTodo={updateTodo}
-				/>
-			)}
-		</>
-	);
+  const { todoItem, onUpdateTodo, onDeleteTodo } = props.children;
+  const [editingMode, setEditingMode] = useState<boolean>(false);
+  return (
+    <>
+      {editingMode ? (
+        <TodoInputMode
+          onUpdateTodo={onUpdateTodo}
+          setEditingMode={(value) => setEditingMode(value)}
+        >
+          {(todoItem = { todoItem })}
+        </TodoInputMode>
+      ) : (
+        <TodoViewMode setEditingMode={(value) => setEditingMode(value)} onDeleteTodo={onDeleteTodo}>
+          {{ todoItem }}
+        </TodoViewMode>
+      )}
+    </>
+  );
 };
 
 export default TodoListItem;
