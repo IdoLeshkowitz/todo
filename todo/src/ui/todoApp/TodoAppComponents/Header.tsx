@@ -1,7 +1,9 @@
-import { useRef } from "react";
-import { Todo } from "../types/types";
+import {useContext, useRef} from "react";
+import { Todo } from "../../../types/types";
+import {TodosContext} from '../../../store/slices/todosContext'
+import TodoApp from "../TodoApp";
 function Header(props: any) {
-	const { addTodo, toDosCounter } = props;
+	const { addTodo, toDosCounter } = useContext(TodosContext);
 	const inputRef = useRef<string | undefined>();
 	const handleKeyDown = (event: any) => {
 		if (event.code === "Enter") {

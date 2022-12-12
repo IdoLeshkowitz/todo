@@ -1,5 +1,8 @@
-const Footer = (props: any) => {
-	const { onClearCompleted, todos } = props;
+import {TodosContext} from "../../../store/slices/todosContext";
+import {useContext} from "react";
+
+const Footer = () => {
+	const { onClearCompleted, todos } =useContext(TodosContext);
 	const calculateActiveTodos = ():string => {
 		const activeTodos = todos.filter((todo: any) => !todo.completed);
 		return activeTodos.length;

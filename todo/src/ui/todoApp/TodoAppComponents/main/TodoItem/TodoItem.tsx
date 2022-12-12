@@ -1,8 +1,8 @@
 //@ts-nocheck
-import { Todo } from "../../../types/types";
+import { Todo } from "../../../../../types/types";
 import { useState } from "react";
-import TodoViewMode from "./TodoInput/TodoViewMode";
-import TodoInputMode from "./TodoInput/TodoInputMode";
+import TodoViewMode from "./TodoViewMode";
+import TodoInputMode from "./TodoInputMode";
 interface Props {
   children: any;
 }

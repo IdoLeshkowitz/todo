@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import "./styles/index.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import {useAuth} from "./hooks/useAuth";
+import {AuthContext} from "./store/slices/authContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>
+    <React.StrictMode>
+            <App/>
+    </React.StrictMode>
 );
 ///kjb
 // If you want to start measuring performance in your app, pass a function
